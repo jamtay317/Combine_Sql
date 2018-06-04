@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}</ProjectGuid>
+    <ProjectGuid>{9A0C1074-E376-4F33-B2B2-7CE6E139B4E9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Combine_Sql.Core</RootNamespace>
-    <AssemblyName>Combine_Sql.Core</AssemblyName>
+    <RootNamespace>Combine_Sql.Input</RootNamespace>
+    <AssemblyName>Combine_Sql.Input</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,12 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Combine_Sql.Input\Combine_Sql.Input.csproj">
-      <Project>{9a0c1074-e376-4f33-b2b2-7ce6e139b4e9}</Project>
-      <Name>Combine_Sql.Input</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

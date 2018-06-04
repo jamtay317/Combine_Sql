@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combine_Sql", "Combine_Sql\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combine_Sql.Core", "Combine_Sql.Core\Combine_Sql.Core.csproj", "{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combine_Sql.Input", "Combine_Sql.Input\Combine_Sql.Input.csproj", "{9A0C1074-E376-4F33-B2B2-7CE6E139B4E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A0C1074-E376-4F33-B2B2-7CE6E139B4E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A0C1074-E376-4F33-B2B2-7CE6E139B4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A0C1074-E376-4F33-B2B2-7CE6E139B4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A0C1074-E376-4F33-B2B2-7CE6E139B4E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

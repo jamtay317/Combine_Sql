@@ -79,6 +79,10 @@
       <Project>{f78561cd-c47f-40ce-b166-0f00f9fb5b5d}</Project>
       <Name>Combine_Sql.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Combine_Sql.Input\Combine_Sql.Input.csproj">
+      <Project>{9a0c1074-e376-4f33-b2b2-7ce6e139b4e9}</Project>
+      <Name>Combine_Sql.Input</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
