@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combine_Sql", "Combine_Sql\Combine_Sql.csproj", "{0C3C045A-4137-4125-BD79-23D28278FEFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Combine_Sql.Core", "Combine_Sql.Core\Combine_Sql.Core.csproj", "{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0C3C045A-4137-4125-BD79-23D28278FEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C3C045A-4137-4125-BD79-23D28278FEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C3C045A-4137-4125-BD79-23D28278FEFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F78561CD-C47F-40CE-B166-0F00F9FB5B5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
