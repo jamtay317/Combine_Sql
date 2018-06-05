@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2A047D00-7143-4ABE-B7FE-A3A6D1F44EAE}</ProjectGuid>
+    <ProjectGuid>{4ED47FEF-010F-4D22-A464-FF740F9A4A8C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Combine_Sql.Output</RootNamespace>
-    <AssemblyName>Combine_Sql.Output</AssemblyName>
+    <RootNamespace>Combine_Sql.Console</RootNamespace>
+    <AssemblyName>Combine_Sql.Console</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileOutput.cs" />
-    <Compile Include="IFileOutput.cs" />
+    <Compile Include="ConsoleInput.cs" />
+    <Compile Include="ConsoleMessage.cs" />
+    <Compile Include="IInput.cs" />
+    <Compile Include="IMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
