@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using Combine_Sql.Console;
 using Combine_Sql.Output;
@@ -33,12 +34,20 @@ namespace Combine_Sql.Core
                 {
                     var combinedFiles = _fileReader.Read(directoryPath);
 
-                    //_output.Create(directoryPath,".sql",combinedFiles,"UpdateDatabase");
-                    //_message.Write($"The File Was Created at { directoryPath }");
+                    _message.Write("Would you like to create the file too? (True/False)");
+                    var shouldCreateFile = _input.Read();
+                    DeleteFileIfExists(directoryPath);
 
+                    Boolean.TryParse(shouldCreateFile, out var result);
+                    if (result)
+                    {
+                        _output.Create(directoryPath, ".sql", combinedFiles, "UpdateDatabase");
+                        _message.Write($"The File Was Created at { directoryPath }");
+
+                    }
+
+                    DeleteFileIfExists(directoryPath);
                     _sqlRunner.RunAll(directoryPath);
-
-                    
                 }
                 else
                 {
@@ -47,6 +56,15 @@ namespace Combine_Sql.Core
 
 
             }    
+        }
+
+        private static void DeleteFileIfExists(string directoryPath)
+        {
+            var filePath = Path.Combine(directoryPath, "UpdateDatabase.sql");
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
         }
     }
 }
