@@ -56,15 +56,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\SettingsBuilder.cs" />
+    <Compile Include="Builders\XmlBuilder.cs" />
     <Compile Include="FileBuiler.cs" />
     <Compile Include="FileCombiner.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="IFileBuiler.cs" />
     <Compile Include="IFileCombiner.cs" />
     <Compile Include="IFileReader.cs" />
+    <Compile Include="ISettings.cs" />
     <Compile Include="ISqlRunner.cs" />
+    <Compile Include="Models\Settings.cs" />
     <Compile Include="MySqlRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Combine_Sql.Console\Combine_Sql.Console.csproj">

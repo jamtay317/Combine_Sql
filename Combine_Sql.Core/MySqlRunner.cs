@@ -17,6 +17,12 @@ namespace Combine_Sql.Core
             _input = input;
         }
 
+        public void RunAll(string directoryPath, string connectionString)
+        {
+            _connectionString = connectionString;
+            RunAll(directoryPath);
+        }
+
         public void RunAll(string directoryPath)
         {
             var dirInfo = new DirectoryInfo(directoryPath);
@@ -69,5 +75,7 @@ namespace Combine_Sql.Core
             }
             _message.Write($"executed {fileName} sucessfully");
         }
+
+        
     }
 }

@@ -13,48 +13,48 @@ namespace Combine_Sql.Core
         private readonly IFileReader _fileReader;
         private readonly IFileOutput _output;
         private readonly ISqlRunner _sqlRunner;
+        private readonly ISettingsService _settingsService;
 
-        public FileCombiner(IInput input, IMessage message, IFileReader fileReader, IFileOutput output,ISqlRunner sqlRunner)
+        public FileCombiner(IInput input, IMessage message, IFileReader fileReader, IFileOutput output,ISqlRunner sqlRunner , ISettingsService settingsService)
         {
             _input = input;
             _message = message;
             _fileReader = fileReader;
             _output = output;
             _sqlRunner = sqlRunner;
+            _settingsService = settingsService;
         }
 
         public void Run()
         {
             while (true)
             {
-                _message.Write("What is the directory path?");
-                var directoryPath = _input.Read();
+                var settings = _settingsService.GetSettings();
 
-                if (Directory.Exists(directoryPath))
+                if (Directory.Exists(settings.FilePath))
                 {
-                    var combinedFiles = _fileReader.Read(directoryPath);
+                    var combinedFiles = _fileReader.Read(settings.FilePath);
 
-                    _message.Write("Would you like to create the file too? (True/False)");
-                    var shouldCreateFile = _input.Read();
-                    DeleteFileIfExists(directoryPath);
-
-                    Boolean.TryParse(shouldCreateFile, out var result);
-                    if (result)
+                    if (settings.CreateFile)
                     {
-                        _output.Create(directoryPath, ".sql", combinedFiles, "UpdateDatabase");
-                        _message.Write($"The File Was Created at { directoryPath }");
+                        _output.Create(settings.FilePath, ".sql", combinedFiles, "UpdateDatabase");
+                        _message.Write($"The File Was Created at { settings.FilePath }");
 
                     }
 
-                    DeleteFileIfExists(directoryPath);
-                    _sqlRunner.RunAll(directoryPath);
+                    while (settings.UsePreviousSettings)
+                    {
+                        _message.Write("Press any key to run");
+                        _input.Read();
+
+                        DeleteFileIfExists(settings.FilePath);
+                        _sqlRunner.RunAll(settings.FilePath, settings.ConnectionString);
+                    }
                 }
                 else
                 {
                     _message.Write("That Directory doesnt exist, please try again");
                 }
-
-
             }    
         }
 
