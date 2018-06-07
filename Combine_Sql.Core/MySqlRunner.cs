@@ -60,8 +60,12 @@ namespace Combine_Sql.Core
                 _message.Write(e.Message);
                 _message.Write($"The File is {fileName}");
                 _message.Write("Press any Key to exit");
+
+                _message.Write(e.ToString());
+
                 _input.Read();
-                throw;
+                
+
             }
             _message.Write($"executed {fileName} sucessfully");
         }
