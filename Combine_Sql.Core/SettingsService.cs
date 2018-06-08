@@ -47,13 +47,23 @@ namespace Combine_Sql.Core
 
         public void SaveSettings()
         {
-            var path = Assembly.GetExecutingAssembly().Location;
-            var filePath = Path.Combine(path, "settings.xml");
+            var path = Assembly.GetExecutingAssembly().CodeBase;
+            var filePath = Path.Combine(path, "settings.json");
 
-            if (!File.Exists(filePath))
+            if (File.Exists(filePath))
             {
-                var xmlBuilder = new XmlBuilder();
-                //TODO: save xml file of settings
+                File.Delete(filePath);
+            }
+
+            var builder = new JsonBuilder();
+            builder.AddProperty(nameof(_settings.FilePath), _settings.FilePath)
+                .AddProperty(nameof(_settings.ConnectionString), _settings.ConnectionString)
+                .AddProperty(nameof(_settings.CreateFile), _settings.CreateFile.ToString())
+                .AddProperty(nameof(_settings.UsePreviousSettings), _settings.UsePreviousSettings.ToString());
+
+            using (var writer = File.CreateText(filePath))
+            {
+                writer.Write(builder.ToString());
             }
         }
     }
