@@ -16,6 +16,7 @@ namespace Combine_Sql
             container.RegisterType<IFileBuiler, FileBuiler>();
             container.RegisterType<IFileOutput, FileOutput>();
             container.RegisterType<ISqlRunner, MySqlRunner>();
+            container.RegisterType<ISettingsService, SettingsService>();
 
             return container;
         }
