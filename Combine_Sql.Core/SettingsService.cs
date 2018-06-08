@@ -22,12 +22,25 @@ namespace Combine_Sql.Core
 
         public Settings GetSettings()
         {
-            if(_settings == null || !_settings.UsePreviousSettings)
-            {
-                var settingsBuilder = new SettingsBuilder();
+            var settingsBuilder = new SettingsBuilder();
+            _message.Write("Would You Like to Load Previous Settings? (True/False)");
+            var loadPreviousSettings = _input.Read();
 
+            Boolean.TryParse(loadPreviousSettings, out var shouldUsePreviousSettings);
+            if (shouldUsePreviousSettings)
+            {
+                var filePath = Path.Combine(Environment.CurrentDirectory,"settings.json");
+                _settings = settingsBuilder.LoadFromFile(filePath).Settings;
+                _settings.UsePreviousSettings = true;
+            }
+
+
+            if (_settings == null || !_settings.UsePreviousSettings)
+            {
+                
                 _message.Write("What is the directory path?");
                 var directoryPath = _input.Read();
+                settingsBuilder.WhereAreFiles(directoryPath);
 
                 _message.Write("Would you like to create the file too? (True/False)");
                 var shouldCreateFile = _input.Read();                
@@ -47,7 +60,7 @@ namespace Combine_Sql.Core
 
         public void SaveSettings()
         {
-            var path = Assembly.GetExecutingAssembly().CodeBase;
+            var path = Environment.CurrentDirectory;
             var filePath = Path.Combine(path, "settings.json");
 
             if (File.Exists(filePath))

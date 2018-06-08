@@ -1,4 +1,6 @@
 ﻿using Combine_Sql.Core.Models;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Combine_Sql.Core.Builders
 {
@@ -30,6 +32,13 @@ namespace Combine_Sql.Core.Builders
         public SettingsBuilder UsePreviousSettitngs(bool usePreviousSettings)
         {
             Settings.UsePreviousSettings = usePreviousSettings;
+            return this;
+        }
+
+        public SettingsBuilder LoadFromFile(string filePath)
+        {
+            var jsonText = File.ReadAllText(filePath);
+            Settings = JsonConvert.DeserializeObject<Settings>(jsonText);
             return this;
         }
     }
