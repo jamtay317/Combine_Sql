@@ -64,10 +64,10 @@ namespace Combine_Sql.Core
             catch (Exception e)
             {
                 _message.Write(e.Message);
-                _message.Write($"The File is {fileName}");
+                _message.WriteWarning($"The File is {fileName}");
                 _message.Write("Press any Key to exit");
 
-                _message.Write(e.ToString());
+                _message.WriteError(e.ToString());
 
                 _input.Read();
                 
