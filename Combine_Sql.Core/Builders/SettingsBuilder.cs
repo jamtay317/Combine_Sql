@@ -1,6 +1,7 @@
 ﻿using Combine_Sql.Core.Models;
 using Newtonsoft.Json;
 using System.IO;
+using Combine_Sql.Core.Factories;
 
 namespace Combine_Sql.Core.Builders
 {
@@ -39,6 +40,12 @@ namespace Combine_Sql.Core.Builders
         {
             var jsonText = File.ReadAllText(filePath);
             Settings = JsonConvert.DeserializeObject<Settings>(jsonText);
+            return this;
+        }
+
+        public SettingsBuilder SqlType(SqlRunnerType type)
+        {
+            Settings.RunnerType = (int) type;
             return this;
         }
     }

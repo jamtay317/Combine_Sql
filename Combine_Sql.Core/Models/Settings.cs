@@ -5,5 +5,7 @@
         public string ConnectionString, FilePath;
 
         public bool CreateFile, UsePreviousSettings;
+
+        public int RunnerType;
     }
 }

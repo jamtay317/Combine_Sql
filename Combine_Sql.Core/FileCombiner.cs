@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 using Combine_Sql.Console;
+using Combine_Sql.Core.Factories;
 using Combine_Sql.Output;
 
 namespace Combine_Sql.Core
@@ -12,16 +13,17 @@ namespace Combine_Sql.Core
         private readonly IMessage _message;
         private readonly IFileReader _fileReader;
         private readonly IFileOutput _output;
-        private readonly ISqlRunner _sqlRunner;
+        private ISqlRunner _sqlRunner;
         private readonly ISettingsService _settingsService;
+        private readonly ISqlRunnerFacory _sqlRunnerfactory;
 
-        public FileCombiner(IInput input, IMessage message, IFileReader fileReader, IFileOutput output,ISqlRunner sqlRunner , ISettingsService settingsService)
+        public FileCombiner(IInput input, IMessage message, IFileReader fileReader, IFileOutput output,ISqlRunnerFacory sqlRunnerfactory , ISettingsService settingsService)
         {
             _input = input;
             _message = message;
             _fileReader = fileReader;
             _output = output;
-            _sqlRunner = sqlRunner;
+            _sqlRunnerfactory = sqlRunnerfactory;
             _settingsService = settingsService;
         }
 
@@ -48,6 +50,7 @@ namespace Combine_Sql.Core
                         _input.Read();
 
                         DeleteFileIfExists(settings.FilePath);
+                        _sqlRunner = _sqlRunner ?? _sqlRunnerfactory.GetRunner((SqlRunnerType)_settingsService.GetSettings().RunnerType);
                         _sqlRunner.RunAll(settings.FilePath, settings.ConnectionString);
                     }
                 }

@@ -1,5 +1,8 @@
 ﻿using Combine_Sql.Console;
 using Combine_Sql.Core;
+using Combine_Sql.Core.Factories;
+using Combine_Sql.Core.Helpers;
+using Combine_Sql.Helpers;
 using Combine_Sql.Output;
 using Microsoft.Practices.Unity;
 
@@ -15,8 +18,9 @@ namespace Combine_Sql
             container.RegisterType<IFileReader, FileReader>();
             container.RegisterType<IFileBuiler, FileBuiler>();
             container.RegisterType<IFileOutput, FileOutput>();
-            container.RegisterType<ISqlRunner, MySqlRunner>();
+            container.RegisterType<ISqlRunnerFacory, SqlRunnerFactory>();
             container.RegisterType<ISettingsService, SettingsService>();
+            container.RegisterType<IContainerHelper, ContainerHelper>();
 
             return container;
         }
