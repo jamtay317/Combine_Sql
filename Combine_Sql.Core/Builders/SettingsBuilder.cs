@@ -7,8 +7,6 @@ namespace Combine_Sql.Core.Builders
 {
     public class SettingsBuilder
     {
-        
-
         public Settings Settings = new Settings();
 
         public SettingsBuilder ConnectionString(string connectionString)
